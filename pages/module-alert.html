@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>传播洞察平台 - 传播告警</title>
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/module-alert.css">
+</head>
+<body>
+  <div class="app-shell" data-page="alert">
+    <aside class="common-sidebar">
+      <a class="common-brand" href="../index.html" aria-label="传播洞察平台首页">
+        <span class="common-brand-mark" aria-hidden="true">
+          <span class="common-brand-eye"></span>
+        </span>
+        <span class="common-brand-copy">
+          <strong>传播洞察平台</strong>
+          <span>BRAND INSIGHT PLATFORM</span>
+        </span>
+      </a>
+
+      <nav class="common-nav" aria-label="主导航">
+        <section class="common-nav-section">
+          <h2>监测模块</h2>
+          <a class="common-nav-item" href="../index.html">
+            <span class="common-nav-icon common-icon-target" aria-hidden="true"></span>
+            <span>监测项目列表</span>
+          </a>
+          <a class="common-nav-item is-active" href="./module-alert.html">
+            <span class="common-nav-icon common-icon-alert" aria-hidden="true"></span>
+            <span>传播告警</span>
+          </a>
+        </section>
+
+        <section class="common-nav-section">
+          <h2>智能报告</h2>
+          <button class="common-nav-item" type="button" data-coming="报告管理模块将在后续独立页面中开发">
+            <span class="common-nav-icon common-icon-report" aria-hidden="true"></span>
+            <span>报告管理</span>
+          </button>
+          <button class="common-nav-item" type="button" data-coming="报告模板中心将在后续独立页面中开发">
+            <span class="common-nav-icon common-icon-template" aria-hidden="true"></span>
+            <span>报告模板中心</span>
+          </button>
+        </section>
+
+        <section class="common-nav-section">
+          <h2>处置业务</h2>
+          <a class="common-nav-item" href="./module-evidence.html">
+            <span class="common-nav-icon common-icon-evidence" aria-hidden="true"></span>
+            <span>识别取证</span>
+          </a>
+          <a class="common-nav-item" href="./module-disposal.html">
+            <span class="common-nav-icon common-icon-disposal" aria-hidden="true"></span>
+            <span>信息处置</span>
+          </a>
+          <a class="common-nav-item" href="./module-tail-maintenance.html">
+            <span class="common-nav-icon common-icon-tail" aria-hidden="true"></span>
+            <span>尾翼维护</span>
+          </a>
+        </section>
+
+        <section class="common-nav-section">
+          <h2>系统管理</h2>
+          <button class="common-nav-item" type="button" data-coming="账号管理模块将在后续独立页面中开发">
+            <span class="common-nav-icon common-icon-user" aria-hidden="true"></span>
+            <span>账号管理</span>
+          </button>
+          <button class="common-nav-item" type="button" data-coming="刷新记录日志将在后续独立页面中开发">
+            <span class="common-nav-icon common-icon-refresh" aria-hidden="true"></span>
+            <span>刷新记录日志</span>
+          </button>
+          <button class="common-nav-item" type="button" data-coming="互动量刷新管理将在后续独立页面中开发">
+            <span class="common-nav-icon common-icon-sync" aria-hidden="true"></span>
+            <span>互动量刷新管理</span>
+          </button>
+          <button class="common-nav-item" type="button" data-coming="分类设置模块将在后续独立页面中开发">
+            <span class="common-nav-icon common-icon-classify" aria-hidden="true"></span>
+            <span>分类设置</span>
+          </button>
+        </section>
+      </nav>
+
+      <div class="common-balance-card">
+        <span>洞察豆余额</span>
+        <strong>32,580</strong>
+        <div class="common-balance-track" aria-hidden="true">
+          <span style="width: 66%"></span>
+        </div>
+      </div>
+    </aside>
+
+    <main class="app-main">
+      <header class="common-topbar">
+        <div class="common-breadcrumb">
+          <button class="common-icon-button" type="button" data-action="toggle-sidebar" aria-label="收起侧边栏">
+            <span class="common-icon-menu" aria-hidden="true"></span>
+          </button>
+          <span>监测模块</span>
+          <span class="common-breadcrumb-divider">›</span>
+          <strong id="alertBreadcrumbTitle">传播告警</strong>
+        </div>
+
+        <div class="common-top-actions">
+          <button class="common-icon-button alert-bell-button" type="button" data-action="simulate-notice" aria-label="模拟新预警">
+            <span class="common-dot"></span>
+            <span class="common-icon-bell" aria-hidden="true"></span>
+          </button>
+          <button class="common-icon-button" type="button" data-coming="帮助中心将在后续完善" aria-label="帮助中心">
+            <span class="common-icon-help" aria-hidden="true"></span>
+          </button>
+          <button class="common-avatar-button" type="button" data-coming="个人中心将在后续完善" aria-label="个人中心">
+            <span>U</span>
+          </button>
+        </div>
+      </header>
+
+      <section class="alert-module" aria-label="传播告警模块">
+        <section class="alert-view is-active" id="alertListView" data-alert-view="list">
+          <div class="alert-page-head">
+            <div>
+              <span class="alert-eyebrow">Alert Task Center</span>
+              <h1>传播告警任务</h1>
+              <p>从监测项目中识别传播拐点、正面信息机会与负面信息风险，作为处置业务和传播运营的上游入口。</p>
+            </div>
+            <div class="alert-head-actions">
+              <button class="common-button common-button-light" type="button" data-action="simulate-notice">模拟新预警</button>
+              <button class="common-button common-button-primary alert-main-action" type="button" data-open-create>新建告警任务</button>
+            </div>
+          </div>
+
+          <section class="alert-kpi-grid" aria-label="告警概览">
+            <article class="alert-kpi-card alert-kpi-card-running">
+              <span>运行中告警任务</span>
+              <strong id="alertKpiRunning">0</strong>
+              <em>覆盖 8 个监测项目</em>
+            </article>
+            <article class="alert-kpi-card alert-kpi-card-today">
+              <span>今日新增预警</span>
+              <strong id="alertKpiToday">0</strong>
+              <em>传播拐点与单篇信息合计</em>
+            </article>
+            <article class="alert-kpi-card alert-kpi-card-open">
+              <span>高优先级未处理</span>
+              <strong id="alertKpiOpen">0</strong>
+              <em>建议优先研判或转处置</em>
+            </article>
+            <article class="alert-kpi-card alert-kpi-card-push">
+              <span>钉钉推送成功率</span>
+              <strong>98.6%</strong>
+              <em>近 24 小时消息触达</em>
+            </article>
+          </section>
+
+          <section class="alert-filter-panel" aria-label="告警任务筛选">
+            <label class="alert-field">
+              <span>任务搜索</span>
+              <input id="alertTaskSearch" type="search" placeholder="输入任务或项目名称">
+            </label>
+            <label class="alert-field">
+              <span>告警模式</span>
+              <select id="alertModeFilter">
+                <option value="all">全部</option>
+                <option value="inflection">趋势预警</option>
+                <option value="single">单条信息预警</option>
+              </select>
+            </label>
+            <button class="common-button common-button-light" type="button" id="alertResetFilter">重置</button>
+            <button class="common-button common-button-primary" type="button" id="alertApplyFilter">确定</button>
+          </section>
+
+          <section class="alert-task-layout">
+            <div class="alert-task-status-tabs" role="tablist" aria-label="告警任务状态">
+              <button class="is-active" type="button" data-task-status-tab="all">全部 <span data-task-status-count="all">0</span></button>
+              <button type="button" data-task-status-tab="running">运行中 <span data-task-status-count="running">0</span></button>
+              <button type="button" data-task-status-tab="paused">已暂停 <span data-task-status-count="paused">0</span></button>
+              <button type="button" data-task-status-tab="draft">草稿 <span data-task-status-count="draft">0</span></button>
+              <button type="button" data-task-status-tab="completed">已完成 <span data-task-status-count="completed">0</span></button>
+            </div>
+            <div class="alert-task-list" id="alertTaskList" aria-live="polite"></div>
+          </section>
+        </section>
+
+        <section class="alert-view" id="alertCreateView" data-alert-view="create" aria-label="新建告警任务">
+          <div class="alert-page-head alert-page-head-compact">
+            <div>
+              <span class="alert-eyebrow">Create Alert Task</span>
+              <h1 id="alertWizardPageTitle">新建告警任务</h1>
+              <p id="alertWizardPageDesc">选择一个已有监测项目，配置传播拐点与正负面单篇信息预警规则，启动后即可持续产出预警结果。</p>
+            </div>
+            <button class="common-button common-button-light" type="button" data-back-list>返回任务列表</button>
+          </div>
+
+          <div class="alert-create-shell">
+            <nav class="alert-stepper" aria-label="新建步骤">
+              <button class="alert-step is-active" type="button" data-wizard-step="1"><span>1</span>选择监测项目</button>
+              <button class="alert-step" type="button" data-wizard-step="2"><span>2</span>选择预警模式</button>
+              <button class="alert-step" type="button" data-wizard-step="3"><span>3</span>配置预警规则</button>
+              <button class="alert-step" type="button" data-wizard-step="4"><span>4</span>推送与频率</button>
+              <button class="alert-step" type="button" data-wizard-step="5"><span>5</span>确认并启动</button>
+            </nav>
+
+            <section class="alert-wizard-card">
+              <div class="alert-wizard-panel is-active" data-step-panel="1">
+                <div class="alert-wizard-title-row">
+                  <div>
+                    <h2>从监测项目列表中选择数据源</h2>
+                    <p>告警任务只引用监测项目的数据和规则，不把监测项目页面搬进来。这里提供搜索、场景筛选、最近使用、常用收藏和分页，适合项目很多时快速定位。</p>
+                  </div>
+                  <aside class="alert-selected-project" id="alertSelectedProject"></aside>
+                </div>
+                <section class="alert-project-picker" aria-label="监测项目选择器">
+                  <div class="alert-project-toolbar">
+                    <label class="alert-field alert-project-search">
+                      <span>搜索项目</span>
+                      <input id="alertProjectSearch" type="search" placeholder="项目名称、品牌、关键词">
+                    </label>
+                    <label class="alert-field">
+                      <span>业务场景</span>
+                      <select id="alertProjectScene">
+                        <option value="all">全部场景</option>
+                        <option value="event">专项事件</option>
+                        <option value="daily">日常声誉</option>
+                        <option value="risk">投诉风险</option>
+                        <option value="campaign">传播活动</option>
+                      </select>
+                    </label>
+                    <label class="alert-field">
+                      <span>状态</span>
+                      <select id="alertProjectStatus">
+                        <option value="all">全部状态</option>
+                        <option value="running">运行中</option>
+                        <option value="archived">已归档</option>
+                      </select>
+                    </label>
+                    <button class="common-button common-button-light" type="button" id="alertProjectReset">重置</button>
+                  </div>
+                  <div class="alert-project-tabs" role="tablist" aria-label="监测项目视图">
+                    <button class="is-active" type="button" data-project-scope="recent">最近使用</button>
+                    <button type="button" data-project-scope="favorite">常用收藏</button>
+                    <button type="button" data-project-scope="all">全部项目</button>
+                  </div>
+                  <div class="alert-project-table-wrap">
+                    <table class="alert-project-table">
+                      <thead>
+                        <tr>
+                          <th>监测项目</th>
+                          <th>业务场景</th>
+                          <th>平台</th>
+                          <th>数据规模</th>
+                          <th>最近更新</th>
+                          <th>操作</th>
+                        </tr>
+                      </thead>
+                      <tbody id="alertProjectTableBody"></tbody>
+                    </table>
+                  </div>
+                  <footer class="alert-project-footer">
+                    <span id="alertProjectCount">共 0 个项目</span>
+                    <div>
+                      <button class="common-button common-button-light" type="button" id="alertProjectPrev">上一页</button>
+                      <span id="alertProjectPage">1 / 1</span>
+                      <button class="common-button common-button-light" type="button" id="alertProjectNext">下一页</button>
+                    </div>
+                  </footer>
+                </section>
+                <label class="alert-check">
+                  <input id="alertUseHistory" type="checkbox" checked>
+                  <span>启动后先回溯近 24 小时数据，补齐已有预警结果</span>
+                </label>
+              </div>
+
+              <div class="alert-wizard-panel" data-step-panel="2">
+                <h2>选择预警模式</h2>
+                <p>这里不是技术分类，而是业务使用方式。用户要能一眼判断：这个任务是为了发现传播过程中的关键节点，还是为了抓具体单篇内容的正负面机会与风险。</p>
+                <div class="alert-mode-options">
+                  <button class="alert-mode-option" type="button" data-select-mode="inflection">
+                    <span class="alert-mode-mark">拐</span>
+                    <strong>趋势预警（传播拐点）</strong>
+                    <em>用于发布会、车展、上市活动、危机事件等专项传播研判。重点不是某一篇内容，而是发现“声音为什么突然上升、下降、转向或扩散”。输出多个拐点，每个拐点给出判断依据、关键样本和建议动作。</em>
+                    <small>典型结果：声量节奏、主体结构、议题转向、观点框架、情绪结构、平台迁移、圈层扩散、内容形态、风险升级、机会放大。</small>
+                  </button>
+                  <button class="alert-mode-option" type="button" data-select-mode="single">
+                    <span class="alert-mode-mark">篇</span>
+                    <strong>单条信息预警</strong>
+                    <em>用于日常监测和高频值班。重点是找到一篇具体内容：负面内容用于风险确认和后续稿件处置，正面内容用于传播素材、简报和扩散机会沉淀。</em>
+                    <small>典型结果：负面风险稿件、正面用户证言、媒体/KOL 推荐内容、高互动机会内容。</small>
+                  </button>
+                </div>
+              </div>
+
+              <div class="alert-wizard-panel" data-step-panel="3">
+                <h2>配置预警规则</h2>
+                <p>趋势预警会带你依次回答四个业务问题；单条信息预警用于配置一篇内容如何命中正面机会或负面风险。</p>
+                <div class="alert-rule-workspace" id="alertRuleWorkspace"></div>
+              </div>
+
+              <div class="alert-wizard-panel" data-step-panel="4">
+                <h2>配置钉钉推送</h2>
+                <p>本系统只配置钉钉推送。系统内通知默认进入预警结果页，钉钉用于把关键预警同步给领导、品牌、公关、市场或值班人员。</p>
+                <div class="alert-push-grid">
+                  <label class="alert-form-field">
+                    <span>钉钉推送群</span>
+                    <select id="alertDingGroup">
+                      <option>品牌传播应急群</option>
+                      <option>公关策略研判群</option>
+                      <option>市场传播日报群</option>
+                    </select>
+                  </label>
+                  <label class="alert-form-field">
+                    <span>推送频率</span>
+                    <select id="alertFrequency">
+                      <option>高优先级即时，普通预警 30 分钟聚合</option>
+                      <option>全部即时推送</option>
+                      <option>15 分钟聚合推送</option>
+                      <option>每日 18:00 汇总</option>
+                    </select>
+                  </label>
+                  <section class="alert-receiver-field">
+                    <div>
+                      <span>推送接收人</span>
+                      <button class="common-button common-button-light" type="button" id="alertOpenReceivers">添加接收人</button>
+                    </div>
+                    <div class="alert-receiver-chips" id="alertReceiverChips"></div>
+                  </section>
+                  <section class="alert-push-content">
+                    <h3>推送内容</h3>
+                    <label><input type="checkbox" data-push-content="预警结论" checked>预警结论</label>
+                    <label><input type="checkbox" data-push-content="判断依据" checked>判断依据</label>
+                    <label><input type="checkbox" data-push-content="关键样本" checked>关键样本</label>
+                    <label><input type="checkbox" data-push-content="趋势数据" checked>趋势数据</label>
+                    <label><input type="checkbox" data-push-content="建议动作" checked>建议动作</label>
+                    <label><input type="checkbox" data-push-content="原文链接">原文链接</label>
+                  </section>
+                  <label class="alert-form-field">
+                    <span>去重规则</span>
+                    <select id="alertDedup">
+                      <option>同观点 2 小时内不重复推送</option>
+                      <option>同链接不重复推送</option>
+                      <option>同账号 30 分钟限频</option>
+                    </select>
+                  </label>
+                  <label class="alert-form-field">
+                    <span>静默时间</span>
+                    <input id="alertSilentTime" type="text" value="22:30-08:00 普通预警静默">
+                  </label>
+                </div>
+              </div>
+
+              <div class="alert-wizard-panel" data-step-panel="5">
+                <h2 id="alertWizardConfirmTitle">确认并启动</h2>
+                <p id="alertWizardConfirmDesc">确认后任务进入运行状态，预警结果会持续沉淀在任务结果页，单条负面预警可继续流转到处置业务。</p>
+                <div class="alert-summary-card" id="alertWizardSummary"></div>
+              </div>
+
+              <footer class="alert-wizard-footer">
+                <button class="common-button common-button-light" type="button" data-wizard-prev>上一步</button>
+                <button class="common-button common-button-primary" type="button" data-wizard-next>下一步</button>
+                <button class="common-button common-button-primary" type="button" data-launch-task hidden>启动任务</button>
+              </footer>
+            </section>
+          </div>
+        </section>
+
+        <section class="alert-view" id="alertResultView" data-alert-view="result" aria-label="告警任务结果">
+          <div class="alert-result-head">
+            <button class="common-button common-button-light" type="button" data-back-list>返回任务列表</button>
+            <div class="alert-result-title">
+              <span class="alert-eyebrow">Warning Result Workspace</span>
+              <h1 id="alertResultTitle">告警任务结果</h1>
+              <p id="alertResultDesc">查看传播拐点和正负面单条信息预警，单条信息可通过筛选和翻页查看全部告警记录。</p>
+            </div>
+            <div class="alert-head-actions">
+              <button class="common-button common-button-light" type="button" data-action="simulate-notice">模拟新预警</button>
+              <button class="common-button common-button-light" type="button" data-edit-current-rule>编辑规则</button>
+              <button class="common-button common-button-primary" type="button" data-action="test-push">测试钉钉推送</button>
+            </div>
+          </div>
+
+          <section class="alert-result-overview">
+            <article>
+              <span>累计预警</span>
+              <strong id="alertResultTotal">0</strong>
+            </article>
+            <article>
+              <span>传播拐点</span>
+              <strong id="alertResultInflection">0</strong>
+            </article>
+            <article>
+              <span>正面信息</span>
+              <strong id="alertResultPositive">0</strong>
+            </article>
+            <article>
+              <span>负面信息</span>
+              <strong id="alertResultNegative">0</strong>
+            </article>
+            <article>
+              <span>已转处置</span>
+              <strong id="alertResultTransfer">0</strong>
+            </article>
+          </section>
+
+          <section class="alert-result-composition" id="alertResultComposition" aria-label="预警结果结构"></section>
+
+          <section class="alert-result-tabs" role="tablist" aria-label="预警结果类型">
+            <button class="is-active" type="button" data-result-tab="inflection">传播拐点预警</button>
+            <button type="button" data-result-tab="single">单条信息预警</button>
+          </section>
+
+          <section class="alert-result-pane is-active" id="alertPaneInflection" data-result-pane="inflection">
+            <div class="alert-inflection-layout">
+              <section class="alert-chart-panel">
+                <header>
+                  <div>
+                    <h2>传播过程结构变化</h2>
+                    <p>从声量、主体、重要媒体自然发声、议题、观点、情绪、平台、圈层、内容形态、风险和机会中识别传播拐点。</p>
+                  </div>
+                  <span class="alert-chart-badge">近 24 小时</span>
+                </header>
+                <div class="alert-trend-chart" id="alertTrendChart" aria-label="传播趋势图"></div>
+                <div class="alert-chart-legend">
+                  <span><i class="alert-legend-total"></i>总声量</span>
+                  <span><i class="alert-legend-media"></i>媒体</span>
+                  <span><i class="alert-legend-kol"></i>KOL</span>
+                  <span><i class="alert-legend-user"></i>自然用户</span>
+                </div>
+              </section>
+              <aside class="alert-judge-panel">
+                <h2>传播拐点分类框架</h2>
+                <div class="alert-taxonomy-grid">
+                  <span>声量节奏</span>
+                  <span>主体结构</span>
+                  <span>重要媒体</span>
+                  <span>议题转向</span>
+                  <span>观点框架</span>
+                  <span>情绪结构</span>
+                  <span>平台迁移</span>
+                  <span>圈层扩散</span>
+                  <span>内容形态</span>
+                  <span>风险升级</span>
+                  <span>机会放大</span>
+                </div>
+              </aside>
+            </div>
+            <div class="alert-section-head">
+              <div><h2>传播拐点研判队列</h2><span>识别声音为何变化、谁在推动、核心论点是什么，再判断主动引导、持续观察或直接介入处置。</span></div>
+            </div>
+            <div class="alert-inflection-filter-bar" aria-label="传播拐点筛选">
+              <label class="alert-field"><span>拐点类型</span><select id="alertInflectionType"><option value="all">全部类型</option><option value="重要媒体自然发声拐点">重要媒体发声</option><option value="声量节奏拐点">声量节奏</option><option value="议题转向拐点">议题转向</option><option value="观点框架拐点">观点框架</option><option value="情绪结构拐点">情绪结构</option><option value="平台迁移拐点">平台迁移</option><option value="风险升级拐点">风险升级</option></select></label>
+              <label class="alert-field"><span>优先级</span><select id="alertInflectionLevel"><option value="all">全部优先级</option><option value="high">高优先级</option><option value="medium">中优先级</option><option value="low">低优先级</option></select></label>
+              <label class="alert-field"><span>决策状态</span><select id="alertInflectionDecision"><option value="all">全部状态</option><option value="pending">待研判</option><option value="guide">主动引导</option><option value="observe">持续观察</option><option value="intervene">介入处置</option><option value="archived">已归档</option></select></label>
+              <button class="common-button common-button-light" type="button" id="alertInflectionReset">重置</button>
+            </div>
+            <div class="alert-inflection-list" id="alertInflectionList"></div>
+            <footer class="alert-inflection-footer"><span id="alertInflectionCount">共 0 个传播拐点</span><div><button class="common-button common-button-light" type="button" id="alertInflectionPrev">上一页</button><span id="alertInflectionPage">1 / 1</span><button class="common-button common-button-light" type="button" id="alertInflectionNext">下一页</button></div></footer>
+          </section>
+
+          <section class="alert-result-pane" id="alertPaneSingle" data-result-pane="single">
+            <div class="alert-section-head">
+              <div>
+                <h2>单条信息预警</h2>
+                <span>按正面机会和负面风险分流，负面可转处置，正面可加入传播素材或简报。</span>
+              </div>
+              <div class="alert-mini-tabs" role="tablist" aria-label="单条信息筛选">
+                <button class="is-active" type="button" data-single-filter="all">全部</button>
+                <button type="button" data-single-filter="negative">负面预警</button>
+                <button type="button" data-single-filter="positive">正面预警</button>
+                <button type="button" data-single-filter="open">未处理</button>
+              </div>
+            </div>
+            <div class="alert-single-filter-bar" aria-label="单条信息预警筛选">
+              <label class="alert-field"><span>平台</span><select id="alertSinglePlatform"><option value="all">全部平台</option><option value="微博">微博</option><option value="抖音">抖音</option><option value="懂车帝">懂车帝</option><option value="小红书">小红书</option></select></label>
+              <label class="alert-field"><span>优先级</span><select id="alertSingleLevel"><option value="all">全部优先级</option><option value="high">高优先级</option><option value="medium">中优先级</option><option value="low">低优先级</option></select></label>
+              <label class="alert-field"><span>处置状态</span><select id="alertSingleStatus"><option value="all">全部状态</option><option value="未处理">未处理</option><option value="已转处置">已转处置</option><option value="已加入简报">已加入简报</option><option value="已加入素材">已加入素材</option></select></label>
+              <label class="alert-field"><span>账号类型</span><select id="alertSingleAccount"><option value="all">全部账号</option><option value="认证 KOL">认证 KOL</option><option value="头部 KOL">头部 KOL</option><option value="自然用户">自然用户</option><option value="真实车主">真实车主</option><option value="潜客">潜客</option></select></label>
+              <button class="common-button common-button-light" type="button" id="alertSingleReset">重置</button>
+            </div>
+            <div class="alert-table-wrap">
+              <table class="alert-single-table">
+                <thead>
+                  <tr>
+                    <th>预警类型</th>
+                    <th>平台/账号</th>
+                    <th>原文摘要</th>
+                    <th>命中规则</th>
+                    <th>互动量</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody id="alertSingleTableBody"></tbody>
+              </table>
+              <footer class="alert-table-footer">
+                <span id="alertSingleCount">共 0 条告警信息</span>
+                <div>
+                  <button class="common-button common-button-light" type="button" id="alertSinglePrev">上一页</button>
+                  <span id="alertSinglePage">1 / 1</span>
+                  <button class="common-button common-button-light" type="button" id="alertSingleNext">下一页</button>
+                </div>
+              </footer>
+            </div>
+          </section>
+        </section>
+
+        <section class="alert-view" id="alertBreakpointDetailView" data-alert-view="breakpoint" aria-label="传播拐点详情">
+          <div class="alert-detail-head">
+            <button class="common-button common-button-light" type="button" data-back-result>返回预警结果</button>
+            <div>
+              <span class="alert-eyebrow">Inflection Detail</span>
+              <h1 id="alertBreakpointTitle">传播拐点详情</h1>
+              <p id="alertBreakpointConclusion">展示为什么这里构成传播拐点。</p>
+            </div>
+            <div class="alert-head-actions">
+              <button class="common-button common-button-light" type="button" data-action="push-current">推送钉钉</button>
+              <button class="common-button common-button-primary" type="button" data-action="brief-current">生成简报素材</button>
+            </div>
+          </div>
+          <div class="alert-detail-grid">
+            <section class="alert-detail-panel alert-detail-panel-wide">
+              <h2>拐点趋势与时间线</h2>
+              <div class="alert-detail-chart" id="alertBreakpointChart"></div>
+              <div class="alert-phase-row" id="alertBreakpointPhases"></div>
+            </section>
+            <section class="alert-detail-panel">
+              <h2>判断依据</h2>
+              <div id="alertBreakpointEvidence"></div>
+            </section>
+            <section class="alert-detail-panel">
+              <h2>传播主题与判断标签</h2>
+              <div id="alertBreakpointTopics"></div>
+            </section>
+            <section class="alert-detail-panel alert-detail-panel-wide">
+              <h2>关键样本与扩散路径</h2>
+              <div class="alert-sample-path">
+                <div id="alertBreakpointSamples"></div>
+                <div id="alertBreakpointPath"></div>
+              </div>
+            </section>
+            <section class="alert-detail-panel">
+              <h2>影响评估</h2>
+              <div id="alertBreakpointImpact"></div>
+            </section>
+            <section class="alert-detail-panel">
+              <h2>建议动作</h2>
+              <div id="alertBreakpointAdvice"></div>
+            </section>
+            <section class="alert-detail-panel alert-detail-panel-wide">
+              <h2>决策与闭环</h2>
+              <div id="alertBreakpointDecision"></div>
+            </section>
+          </div>
+        </section>
+
+        <section class="alert-view" id="alertItemDetailView" data-alert-view="item" aria-label="单条信息预警详情">
+          <div class="alert-detail-head">
+            <button class="common-button common-button-light" type="button" data-back-result>返回预警结果</button>
+            <div>
+              <span class="alert-eyebrow">Single Content Detail</span>
+              <h1 id="alertItemTitle">单条信息预警详情</h1>
+              <p id="alertItemSubTitle">查看单篇内容的正面价值或负面风险。</p>
+            </div>
+            <div class="alert-head-actions" id="alertItemActions"></div>
+          </div>
+          <div class="alert-item-detail-layout">
+            <section class="alert-detail-panel alert-item-content">
+              <div id="alertItemTypeBadge"></div>
+              <h2>原文内容</h2>
+              <p id="alertItemContent"></p>
+              <div class="alert-item-meta" id="alertItemMeta"></div>
+            </section>
+            <section class="alert-detail-panel">
+              <h2>命中规则</h2>
+              <div id="alertItemRules"></div>
+            </section>
+            <section class="alert-detail-panel">
+              <h2>传播数据</h2>
+              <div id="alertItemMetrics"></div>
+            </section>
+            <section class="alert-detail-panel">
+              <h2>研判建议</h2>
+              <div id="alertItemSuggestion"></div>
+            </section>
+            <section class="alert-detail-panel alert-detail-panel-wide">
+              <h2>相似内容与历史关联</h2>
+              <div id="alertItemRelated"></div>
+            </section>
+          </div>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <section class="alert-recipient-modal" id="alertRecipientModal" hidden aria-hidden="true">
+    <div class="alert-recipient-backdrop" data-recipient-close></div>
+    <section class="alert-recipient-panel" role="dialog" aria-modal="true" aria-labelledby="alertRecipientTitle">
+      <header class="alert-recipient-head">
+        <h2 id="alertRecipientTitle">添加接收人</h2>
+        <button type="button" data-recipient-close aria-label="关闭">×</button>
+      </header>
+      <div class="alert-recipient-body">
+        <section class="alert-recipient-left">
+          <header>请选择</header>
+          <div class="alert-recipient-search">
+            <span aria-hidden="true"></span>
+            <input id="alertRecipientSearch" type="search" placeholder="搜索用户名、群聊天、部门">
+          </div>
+          <div class="alert-recipient-filter-buttons">
+            <button class="common-button common-button-light" type="button" data-coming="群聊选择将在接入钉钉组织架构后可用">按群聊选择</button>
+            <button class="common-button common-button-light" type="button" data-coming="组织架构选择将在接入钉钉组织架构后可用">按架构选择</button>
+          </div>
+          <h3>最近联系人</h3>
+          <div class="alert-recipient-list" id="alertRecipientList"></div>
+        </section>
+        <section class="alert-recipient-right">
+          <header>
+            <span id="alertRecipientSelectedTitle">已选（0/10000）人</span>
+            <button type="button" id="alertRecipientClear" aria-label="清空已选"></button>
+          </header>
+          <div class="alert-recipient-selected" id="alertRecipientSelected"></div>
+        </section>
+      </div>
+      <footer class="alert-recipient-footer">
+        <button class="common-button common-button-light" type="button" data-recipient-close>取消</button>
+        <button class="common-button common-button-primary" type="button" id="alertRecipientConfirm">确定</button>
+      </footer>
+    </section>
+  </section>
+
+  <aside class="alert-live-notice" id="alertLiveNotice" hidden aria-live="polite">
+    <header>
+      <span>新预警</span>
+      <button type="button" id="alertNoticeClose" aria-label="关闭">×</button>
+    </header>
+    <strong id="alertNoticeTitle">媒体集中发声推动新观点发酵</strong>
+    <p id="alertNoticeText">系统识别到一个高优先级传播拐点，建议进入任务结果页研判。</p>
+    <div>
+      <button class="common-button common-button-light" type="button" id="alertNoticeResult">查看结果页</button>
+      <button class="common-button common-button-primary" type="button" id="alertNoticeDetail">查看详情</button>
+    </div>
+  </aside>
+
+  <div class="common-toast" id="commonToast" role="status" aria-live="polite"></div>
+
+  <script src="../js/common.js"></script>
+  <script src="../js/module-alert.js"></script>
+</body>
+</html>

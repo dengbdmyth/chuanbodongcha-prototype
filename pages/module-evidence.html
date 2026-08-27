@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>传播洞察平台 - 识别取证</title>
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/module-evidence.css">
+</head>
+<body>
+  <div class="app-shell" data-page="evidence">
+    <aside class="common-sidebar">
+      <a class="common-brand" href="../index.html" aria-label="传播洞察平台首页">
+        <span class="common-brand-mark" aria-hidden="true"><span class="common-brand-eye"></span></span>
+        <span class="common-brand-copy"><strong>传播洞察平台</strong><span>BRAND INSIGHT PLATFORM</span></span>
+      </a>
+
+      <nav class="common-nav" aria-label="主导航">
+        <section class="common-nav-section">
+          <h2>监测模块</h2>
+          <a class="common-nav-item" href="../index.html"><span class="common-nav-icon common-icon-target" aria-hidden="true"></span><span>监测项目列表</span></a>
+          <a class="common-nav-item" href="./module-alert.html"><span class="common-nav-icon common-icon-alert" aria-hidden="true"></span><span>传播告警</span></a>
+        </section>
+        <section class="common-nav-section">
+          <h2>智能报告</h2>
+          <button class="common-nav-item" type="button" data-coming="报告管理模块将在后续独立页面中开发"><span class="common-nav-icon common-icon-report" aria-hidden="true"></span><span>报告管理</span></button>
+          <button class="common-nav-item" type="button" data-coming="报告模板中心将在后续独立页面中开发"><span class="common-nav-icon common-icon-template" aria-hidden="true"></span><span>报告模板中心</span></button>
+        </section>
+        <section class="common-nav-section">
+          <h2>处置业务</h2>
+          <a class="common-nav-item is-active" href="./module-evidence.html"><span class="common-nav-icon common-icon-evidence" aria-hidden="true"></span><span>识别取证</span></a>
+          <a class="common-nav-item" href="./module-disposal.html"><span class="common-nav-icon common-icon-disposal" aria-hidden="true"></span><span>信息处置</span></a>
+          <a class="common-nav-item" href="./module-tail-maintenance.html"><span class="common-nav-icon common-icon-tail" aria-hidden="true"></span><span>尾翼维护</span></a>
+        </section>
+        <section class="common-nav-section">
+          <h2>系统管理</h2>
+          <button class="common-nav-item" type="button" data-coming="账号管理模块将在后续独立页面中开发"><span class="common-nav-icon common-icon-user" aria-hidden="true"></span><span>账号管理</span></button>
+          <button class="common-nav-item" type="button" data-coming="刷新记录日志将在后续独立页面中开发"><span class="common-nav-icon common-icon-refresh" aria-hidden="true"></span><span>刷新记录日志</span></button>
+          <button class="common-nav-item" type="button" data-coming="互动量刷新管理将在后续独立页面中开发"><span class="common-nav-icon common-icon-sync" aria-hidden="true"></span><span>互动量刷新管理</span></button>
+          <button class="common-nav-item" type="button" data-coming="分类设置模块将在后续独立页面中开发"><span class="common-nav-icon common-icon-classify" aria-hidden="true"></span><span>分类设置</span></button>
+        </section>
+      </nav>
+
+      <div class="common-balance-card">
+        <span>洞察豆余额</span>
+        <strong>32,580</strong>
+        <div class="common-balance-track" aria-hidden="true"><span style="width: 66%"></span></div>
+      </div>
+    </aside>
+
+    <main class="app-main">
+      <header class="common-topbar">
+        <div class="common-breadcrumb">
+          <button class="common-icon-button" type="button" data-action="toggle-sidebar" aria-label="收起侧边栏"><span class="common-icon-menu" aria-hidden="true"></span></button>
+          <span>处置业务</span><span class="common-breadcrumb-divider">›</span><strong>识别取证</strong>
+        </div>
+        <div class="common-top-actions">
+          <button class="common-icon-button" type="button" data-coming="消息中心将在后续完善" aria-label="消息中心"><span class="common-dot"></span><span class="common-icon-bell" aria-hidden="true"></span></button>
+          <button class="common-icon-button" type="button" data-coming="帮助中心将在后续完善" aria-label="帮助中心"><span class="common-icon-help" aria-hidden="true"></span></button>
+          <button class="common-avatar-button" type="button" data-coming="个人中心将在后续完善" aria-label="个人中心"><span>U</span></button>
+        </div>
+      </header>
+
+      <section class="evidence-page" aria-label="识别取证模块">
+        <header class="evidence-page-head">
+          <div>
+            <span class="evidence-eyebrow">ACCOUNT GOVERNANCE</span>
+            <h1>识别取证</h1>
+            <p id="evidencePageDescription">按账号归并传播告警中的负面信息，完成二次初筛、证据获取与执行派发。</p>
+          </div>
+          <button class="evidence-settings-button" type="button" data-evidence-action="open-settings"><span class="evidence-settings-icon" aria-hidden="true"></span>接入与初判设置</button>
+        </header>
+
+        <div class="evidence-business-switch" role="tablist" aria-label="业务工作台">
+          <button class="is-active" type="button" data-workbench="screening" role="tab">
+            <span>取证初筛</span><small>1号员工 · 复核、固证、派发</small><b id="screeningBadge">0</b>
+          </button>
+          <button type="button" data-workbench="handling" role="tab">
+            <span>账号处置</span><small>2号员工 · 策略、执行、结案</small><b id="handlingBadge">0</b>
+          </button>
+        </div>
+
+        <section class="evidence-kpis" id="evidenceKpis" aria-label="业务概览"></section>
+
+        <section class="evidence-toolbar" aria-label="案件筛选">
+          <div class="evidence-view-tabs" id="evidenceViewTabs"></div>
+          <div class="evidence-scope-tabs" id="evidenceScopeTabs"></div>
+          <div class="evidence-filter-tabs" id="evidenceFilterTabs"></div>
+          <button class="evidence-filter-button" type="button" data-evidence-action="toggle-filters"><span class="evidence-filter-icon" aria-hidden="true"></span>筛选</button>
+          <label class="evidence-search">
+            <span class="evidence-search-icon" aria-hidden="true"></span>
+            <input id="evidenceSearch" type="search" placeholder="搜索账号、案件编号、品牌或信息标题">
+          </label>
+        </section>
+        <section class="evidence-advanced-filters" id="evidenceAdvancedFilters" hidden></section>
+
+        <section class="evidence-workspace" id="evidenceWorkspace" aria-live="polite"></section>
+      </section>
+    </main>
+  </div>
+
+  <div class="evidence-modal-layer" id="evidenceModalLayer" hidden>
+    <div class="evidence-modal-backdrop" data-evidence-action="close-modal"></div>
+    <section class="evidence-modal" id="evidenceModal" role="dialog" aria-modal="true" aria-labelledby="evidenceModalTitle"></section>
+  </div>
+
+  <div class="common-toast" id="commonToast" role="status" aria-live="polite"></div>
+
+  <script src="../js/common.js"></script>
+  <script src="../js/module-evidence.js"></script>
+</body>
+</html>
