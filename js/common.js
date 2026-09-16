@@ -84,6 +84,50 @@
     });
   }
 
+  function initSystemManagementNavigation() {
+    var inPages = window.location.pathname.replace(/\\/g, "/").indexOf("/pages/") > -1;
+    var prefix = inPages ? "./" : "./pages/";
+    var activePage = document.body.getAttribute("data-system-page") || "";
+
+    qsa(".common-nav-section").forEach(function (section) {
+      var heading = section.querySelector("h2");
+      if (!heading || heading.textContent.trim() !== "系统管理") {
+        return;
+      }
+
+      var accountItem = qsa(".common-nav-item", section).filter(function (item) {
+        return item.textContent.trim() === "账号管理";
+      })[0];
+
+      if (accountItem && accountItem.tagName !== "A") {
+        var accountLink = document.createElement("a");
+        accountLink.className = accountItem.className;
+        accountLink.href = prefix + "module-account-management.html";
+        accountLink.innerHTML = accountItem.innerHTML;
+        accountItem.replaceWith(accountLink);
+        accountItem = accountLink;
+      }
+
+      if (accountItem) {
+        accountItem.classList.toggle("is-active", activePage === "accounts");
+      }
+
+      var roleItem = qsa(".common-nav-item", section).filter(function (item) {
+        return item.textContent.trim() === "角色管理";
+      })[0];
+      if (!roleItem && accountItem) {
+        roleItem = document.createElement("a");
+        roleItem.className = "common-nav-item";
+        roleItem.href = prefix + "module-role-management.html";
+        roleItem.innerHTML = '<span class="common-nav-icon common-icon-role" aria-hidden="true"></span><span>角色管理</span>';
+        accountItem.insertAdjacentElement("afterend", roleItem);
+      }
+      if (roleItem) {
+        roleItem.classList.toggle("is-active", activePage === "roles");
+      }
+    });
+  }
+
   window.BrandInsightCommon = {
     qs: qs,
     qsa: qsa,
@@ -93,5 +137,6 @@
     closeModal: closeModal
   };
 
+  initSystemManagementNavigation();
   initCommonInteractions();
 })();

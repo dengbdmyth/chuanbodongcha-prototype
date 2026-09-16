@@ -428,6 +428,30 @@ a {
   border-radius: 10px 10px 0 0;
 }
 
+.common-icon-role::before {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 7px;
+  height: 7px;
+  content: "";
+  border: 1.5px solid currentColor;
+  border-radius: 50%;
+  box-shadow: 8px 3px 0 -1px #f5f8fc, 8px 3px 0 .5px currentColor;
+}
+
+.common-icon-role::after {
+  position: absolute;
+  right: 2px;
+  bottom: 3px;
+  left: 2px;
+  height: 7px;
+  content: "";
+  border: 1.5px solid currentColor;
+  border-bottom: 0;
+  border-radius: 9px 9px 0 0;
+}
+
 .common-icon-refresh::before,
 .common-icon-sync::before {
   position: absolute;
