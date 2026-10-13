@@ -6,138 +6,138 @@
   var projects = [
     {
       id: 1,
-      title: "品牌数据清洗监测与预处理执行任务",
+      title: "比亚迪汽车--10月-副本",
       type: "account",
       typeLabel: "媒体账号监测",
       status: "archived",
       statusLabel: "归档",
       channels: ["微博", "抖音", "快手", "懂车帝"],
-      dataCount: 2540,
+      dataCount: 23161,
       comments: 75,
       positive: 72,
       negative: 8,
       neutral: 20,
-      created: "2026-04-08"
+      created: "2026-10-09"
     },
     {
       id: 2,
-      title: "新车上市口碑实时跟踪任务",
+      title: "理想汽车-10月",
       type: "keyword",
       typeLabel: "关键词监测",
       status: "archived",
       statusLabel: "归档",
       channels: ["微博", "抖音", "快手", "懂车帝"],
-      dataCount: 2540,
+      dataCount: 237018,
       comments: 75,
       positive: 72,
       negative: 8,
       neutral: 20,
-      created: "2026-04-08"
+      created: "2026-10-08"
     },
     {
       id: 3,
-      title: "多平台用户情感倾向分析任务",
+      title: "长安汽车-10月",
       type: "keyword",
       typeLabel: "关键词监测",
       status: "draft",
       statusLabel: "草稿",
       channels: ["微博", "抖音", "快手", "懂车帝"],
-      dataCount: 2540,
+      dataCount: 961491,
       comments: 75,
       positive: 72,
       negative: 8,
       neutral: 20,
-      created: "2026-04-08"
+      created: "2026-10-08"
     },
     {
       id: 4,
-      title: "多平台用户情感倾向分析任务",
+      title: "吉利汽车-10月",
       type: "keyword",
       typeLabel: "关键词监测",
       status: "archived",
       statusLabel: "归档",
       channels: ["微博", "抖音", "快手"],
-      dataCount: 2540,
+      dataCount: 1232005,
       comments: 75,
       positive: 72,
       negative: 8,
       neutral: 20,
-      created: "2026-04-08"
+      created: "2026-10-08"
     },
     {
       id: 5,
-      title: "品牌数据清洗监测与预处理执行任务",
+      title: "奇瑞汽车-10月",
       type: "account",
       typeLabel: "媒体账号监测",
       status: "draft",
       statusLabel: "草稿",
       channels: ["微博", "抖音", "快手"],
-      dataCount: 2540,
+      dataCount: 1249381,
       comments: 75,
       positive: 72,
       negative: 8,
       neutral: 20,
-      created: "2026-04-08"
+      created: "2026-10-08"
     },
     {
       id: 6,
-      title: "汽车品牌全网声誉监测运行任务",
+      title: "长城汽车-10月",
       type: "mixed",
       typeLabel: "关键词监测",
       status: "draft",
       statusLabel: "草稿",
       channels: ["微博", "抖音", "快手", "懂车帝"],
-      dataCount: 2540,
+      dataCount: 939252,
       comments: 75,
       positive: 72,
       negative: 8,
       neutral: 20,
-      created: "2026-04-08"
+      created: "2026-10-08"
     },
     {
       id: 7,
-      title: "质量投诉热点挖掘与归因任务",
+      title: "坦克品牌监测",
       type: "keyword",
       typeLabel: "关键词监测",
       status: "running",
       statusLabel: "运行中",
       channels: ["微博", "抖音", "快手"],
-      dataCount: 2540,
+      dataCount: 4271,
       comments: 75,
       positive: 72,
       negative: 8,
       neutral: 20,
-      created: "2026-04-08"
+      created: "2026-10-09"
     },
     {
       id: 8,
-      title: "多平台用户监测",
+      title: "日常监测2",
       type: "account",
       typeLabel: "媒体账号监测",
       status: "running",
       statusLabel: "运行中",
       channels: ["微博", "抖音", "快手", "懂车帝"],
-      dataCount: 2540,
+      dataCount: 3246,
       comments: 75,
       positive: 72,
       negative: 8,
       neutral: 20,
-      created: "2026-04-08"
+      created: "2026-10-09"
     },
     {
       id: 9,
-      title: "品牌数据清洗监测与预处理执行任务",
+      title: "陆监测",
       type: "account",
       typeLabel: "媒体账号监测",
       status: "running",
       statusLabel: "运行中",
       channels: ["微博", "抖音", "快手", "懂车帝"],
-      dataCount: 2540,
+      dataCount: 0,
       comments: 75,
       positive: 72,
       negative: 8,
       neutral: 20,
-      created: "2026-04-08"
+      created: "2026-10-09"
     }
   ];
 
@@ -178,7 +178,20 @@
     Common.qs("#homeCreateProject").addEventListener("click", function () {
       Common.openModal(Common.qs("#homeProjectModal"));
     });
-    Common.qs("#homeProjectForm").addEventListener("submit", createProject);
+    Common.qsa("[data-create-mode]").forEach(function (button) {
+      button.addEventListener("click", function () {
+        var mode = button.getAttribute("data-create-mode");
+        Common.closeModal(Common.qs("#homeProjectModal"));
+        if (mode === "ai") {
+          openAiCreateDemo();
+        } else {
+          createDemoProject(mode);
+        }
+      });
+    });
+    Common.qsa("[data-detail-close]").forEach(function (button) {
+      button.addEventListener("click", function () { Common.closeModal(Common.qs("#homeDetailModal")); });
+    });
 
     Common.qsa(".home-tab").forEach(function (tab) {
       tab.addEventListener("click", function () {
@@ -213,9 +226,7 @@
         return;
       }
 
-      if (card) {
-        Common.showToast("项目详情页将在该模块独立开发时接入");
-      }
+      if (card) { openProjectDetail(Number(card.getAttribute("data-project-id"))); }
     });
   }
 
@@ -244,12 +255,32 @@
     state.keyword = Common.qs("#homeSearch").value.trim();
     state.monitorType = Common.qs("#homeMonitorType").value;
     state.sentiment = Common.qs("#homeSentiment").value;
-    state.created = Common.qs("#homeCreatedDate").value;
+    state.created = "";
     state.platform = Common.qs("#homePlatform").value;
     state.projectStatus = Common.qs("#homeProjectStatus").value;
 
     renderProjects();
     Common.showToast("筛选条件已应用");
+  }
+
+  function openProjectDetail(id) {
+    var project = projects.filter(function (item) { return item.id === id; })[0];
+    if (!project) { return; }
+    Common.qs("#homeDetailTitle").textContent = project.title;
+    Common.openModal(Common.qs("#homeDetailModal"));
+  }
+
+  function openAiCreateDemo() {
+    Common.showToast("已进入 AI 智能创建：通过多轮问答确认时间范围、平台与监测对象");
+    window.setTimeout(function () {
+      var title = window.prompt("请描述监测需求（示例：监测坦克品牌近30天全网舆情）", "监测坦克品牌近30天全网舆情");
+      if (title) { createDemoProject("keyword", "AI智能监测 · 坦克品牌"); }
+    }, 80);
+  }
+
+  function createDemoProject(mode, title) {
+    projects.unshift({ id: Date.now(), title: title || (mode === "account" ? "媒体账号专项监测" : "通用关键词监测"), type: mode, typeLabel: mode === "account" ? "媒体账号监测" : "关键词监测", status: "running", statusLabel: "运行中", channels: ["微博", "抖音", "快手", "懂车帝"], dataCount: 0, comments: 0, positive: 0, negative: 0, neutral: 0, created: "2026-10-13" });
+    state.tab = "all"; renderTabs(); renderProjects(); Common.showToast("监测项目已创建");
   }
 
   function resetFilters() {

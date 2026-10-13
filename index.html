@@ -35,14 +35,14 @@
 
         <section class="common-nav-section">
           <h2>智能报告</h2>
-          <button class="common-nav-item" type="button" data-coming="报告管理模块将在后续独立页面中开发">
+          <a class="common-nav-item" href="./pages/module-report-management.html">
             <span class="common-nav-icon common-icon-report" aria-hidden="true"></span>
             <span>报告管理</span>
-          </button>
-          <button class="common-nav-item" type="button" data-coming="报告模板中心将在后续独立页面中开发">
+          </a>
+          <a class="common-nav-item" href="./pages/module-report-template-center.html">
             <span class="common-nav-icon common-icon-template" aria-hidden="true"></span>
             <span>报告模板中心</span>
-          </button>
+          </a>
         </section>
 
         <section class="common-nav-section">
@@ -121,28 +121,28 @@
           <article class="home-kpi-card">
             <div>
               <span>监测项目总数</span>
-              <strong data-count-up="245678">245,678</strong>
+              <strong data-count-up="30">30</strong>
             </div>
             <span class="home-kpi-visual home-kpi-bars" aria-hidden="true"></span>
           </article>
           <article class="home-kpi-card">
             <div>
               <span>运行中项目</span>
-              <strong data-count-up="245678">245,678</strong>
+              <strong data-count-up="30">30</strong>
             </div>
             <span class="home-kpi-visual home-kpi-scan" aria-hidden="true"></span>
           </article>
           <article class="home-kpi-card">
             <div>
-              <span>今日新增数量</span>
-              <strong data-count-up="245678">245,678</strong>
+              <span>运行项目总数据量</span>
+              <strong data-count-up="57496573">57,496,573</strong>
             </div>
             <span class="home-kpi-visual home-kpi-stack" aria-hidden="true"></span>
           </article>
           <article class="home-kpi-card">
             <div>
               <span>今日洞察豆消耗</span>
-              <strong data-count-up="678">678</strong>
+              <strong data-count-up="0">0</strong>
             </div>
             <span class="home-kpi-visual home-kpi-nodes" aria-hidden="true"></span>
           </article>
@@ -152,7 +152,7 @@
           <div class="home-filter-row">
             <label class="home-field">
               <span>项目搜索</span>
-              <input id="homeSearch" type="search" placeholder="请输入">
+              <input id="homeSearch" type="search" placeholder="请输入名称">
             </label>
             <label class="home-field">
               <span>监测类型</span>
@@ -172,17 +172,12 @@
 
           <div class="home-filter-row">
             <label class="home-field">
-              <span>情感状态</span>
-              <select id="homeSentiment">
-                <option value="all">全部</option>
-                <option value="positive">正向占优</option>
-                <option value="negative">负向预警</option>
-                <option value="neutral">中性占优</option>
-              </select>
+              <span>平台</span>
+              <select id="homeSentiment"><option value="all">全网监测</option><option value="positive">指定平台</option></select>
             </label>
             <label class="home-field">
-              <span>创建日期</span>
-              <input id="homeCreatedDate" type="date">
+              <span>指定平台</span>
+              <input id="homeCreatedDate" type="text" placeholder="搜索平台名称，如：新华网">
             </label>
           </div>
 
@@ -221,7 +216,7 @@
             <label class="home-sort">
               <span class="sr-only">排序</span>
               <select id="homeSort">
-                <option value="created-desc">监测创建时间</option>
+                <option value="created-desc">监测创建时间(降序)</option>
                 <option value="comments-desc">评论量最高</option>
                 <option value="data-desc">数据量最高</option>
               </select>
@@ -249,40 +244,21 @@
     <div class="common-modal-backdrop" data-modal-close></div>
     <section class="common-modal-panel" role="dialog" aria-modal="true" aria-labelledby="homeProjectModalTitle">
       <header class="common-modal-head">
-        <h2 id="homeProjectModalTitle">新建监测项目</h2>
+        <h2 id="homeProjectModalTitle">选择创建方式</h2>
         <button class="common-icon-button" type="button" data-modal-close aria-label="关闭">
           <span class="common-icon-close" aria-hidden="true"></span>
         </button>
       </header>
-      <form class="home-project-form" id="homeProjectForm">
-        <label class="home-form-field">
-          <span>项目名称</span>
-          <input name="title" type="text" placeholder="请输入项目名称" required>
-        </label>
-        <label class="home-form-field">
-          <span>监测类型</span>
-          <select name="type">
-            <option value="keyword">关键词监测</option>
-            <option value="account">媒体账号监测</option>
-            <option value="mixed">混合监测</option>
-          </select>
-        </label>
-        <label class="home-form-field">
-          <span>首选平台</span>
-          <select name="platform">
-            <option value="微博">微博</option>
-            <option value="抖音">抖音</option>
-            <option value="快手">快手</option>
-            <option value="懂车帝">懂车帝</option>
-          </select>
-        </label>
-        <footer class="common-modal-actions">
-          <button class="common-button common-button-light" type="button" data-modal-close>取消</button>
-          <button class="common-button common-button-primary" type="submit">保存项目</button>
-        </footer>
-      </form>
+      <div class="home-project-form home-create-choices" id="homeProjectForm">
+        <button class="home-create-choice is-recommended" type="button" data-create-mode="ai"><strong>AI 智能创建 <em>推荐</em></strong><span>用自然语言描述需求，AI 自动配置监测规则，新手友好，效率最高</span></button>
+        <button class="home-create-choice" type="button" data-create-mode="keyword"><strong>通用关键词监测</strong><span>通过关键词组合配置监测规则，适合品牌舆情、话题追踪等场景</span></button>
+        <button class="home-create-choice" type="button" data-create-mode="account"><strong>媒体账号监测</strong><span>针对特定的媒体账号进行专项监测，适合竞品追踪、账号分析</span></button>
+        <footer class="common-modal-actions"><button class="common-button common-button-light" type="button" data-modal-close>取消</button></footer>
+      </div>
     </section>
   </div>
+
+  <div class="common-modal" id="homeDetailModal" aria-hidden="true"><div class="common-modal-backdrop" data-detail-close></div><section class="common-modal-panel home-detail-panel" role="dialog" aria-modal="true"><header class="common-modal-head"><div><h2 id="homeDetailTitle">坦克品牌监测</h2><span class="home-status home-status-running">运行中</span></div><button class="common-icon-button" type="button" data-detail-close><span class="common-icon-close"></span></button></header><div class="home-detail-body"><div class="home-detail-metrics"><article><span>声量</span><strong>4,271</strong><i>已完成数据采集</i></article><article><span>互动量总数</span><strong>3,269</strong></article><article><span>负面声量占比</span><strong>5.15%</strong></article><article><span>正面声量占比</span><strong>27.23%</strong></article></div><div class="home-detail-actions"><button class="common-button">刷新互动量</button><button class="common-button">刷新评论</button><button class="common-button">导出数据</button><button class="common-button common-button-primary" id="homeChartAnalysis">图表分析 ›</button></div><div class="home-detail-filter"><input placeholder="请输入关键词"><select><option>全部时间</option><option>近7天</option><option>自定义</option></select><button class="common-button">高级搜索</button><button class="common-button common-button-primary">确定</button></div><div class="home-content-list"><article><b>长城坦克 300 虎克之路官图发布，计划国庆节前推出</b><span>快资讯　IT之家　2026-09-11 00:00:00</span><p>摘要　长城汽车坦克品牌最新产品信息及市场传播动态……</p><em>正面</em></article><article><b>坦克500新能源享受补贴送大礼包</b><span>易车　常州宝华坦克新能源　2026-09-10 23:59:59</span><p>摘要　产品促销信息与车型权益内容……</p><em>中性</em></article><article><b>全新宝马i3、魏牌蓝山、阿维塔T09等新车亮相</b><span>微信　电动车公社　2026-09-10 23:58:59</span><p>摘要　新品上市与竞品市场信息……</p><em>正面</em></article></div></div></section></div>
 
   <script src="./js/common.js"></script>
   <script src="./js/home.js"></script>
